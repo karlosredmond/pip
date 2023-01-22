@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
-    "start": "webpack-dev-server --hot"
+    "start": "webpack-dev-server --hot",
+    "deploy": "gh-pages -d build"
   },
   "author": "Chris Gallagher",
   "license": "ISC",
