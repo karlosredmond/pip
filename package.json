@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "start": "webpack-dev-server --hot",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "build": "echo build"
   },
   "author": "Chris Gallagher",
   "license": "ISC",
