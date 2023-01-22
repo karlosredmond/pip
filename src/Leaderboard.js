@@ -166,40 +166,36 @@ class Leaderboard extends Component {
   */
   render() {
     return (
-      <div>
-        <table id="lBoard">
-          <tbody className='ranking'>
+      <div className='leaderboard'>
+        <table id="lBoard" style={{ width:"100%" }}>
+          <tbody className='ranking' style={{ width:"100%" }}>
             <tr>
-              <td colspan="10000"><h1>Leaderboard</h1></td>
+              <td className='ico-cup' colspan="10000"><h1>Pips Birthday Book - Prize €110</h1></td>
             </tr>
-            <tr>
-              <td colspan="10000">
-                <form onChange={this.filterRank}>
-                  Name: <input type="search" name="search" placeholder="Search"/>
-                </form>
-              </td>
-            </tr>
-            <tr>
-              <td className='rank-header sortScore' onClick={ this.sortUsersByScore }> Rank </td>
+            <tr style={{ width:"100%" }}>
+              <td className='rank-header sortScore'  onClick={ this.sortUsersByScore }> Rank </td>
               <td className='rank-header sortAlpha' onClick={ this.sortUsersByName }> Name </td>
               <td className='rank-header' onClick={ this.sortUsersByScore }> Score </td>
+              <td className='rank-header' onClick={ this.sortUsersByName }> Date </td>
+              <td className='rank-header' onClick={ this.sortUsersByName }> Boy/Girl </td>
+              <td className='rank-header' onClick={ this.sortUsersByScore }> W/Boy </td>
+              <td className='rank-header' onClick={ this.sortUsersByScore }> W/Girl </td>
             </tr>
             {
             this.state.ranking.map((user, index) =>
-               <tr className='ranking' key={index}>
+               <tr className='ranking' style={{ width:"100%" }} key={index}>
                 { user.page == this.state.page ? <td className='data'>{ user.rank }</td> : null }
                 { user.page == this.state.page ? <td className='data'>{ user.name }</td> : null }
                 { user.page == this.state.page ? <td className='data'>{ user.score }</td> : null }
+                { user.page == this.state.page ? <td className='data'>{ user.dateGuess }</td> : null }
+                { user.page == this.state.page ? <td className='data'>{ user.sexGuess }</td> : null }
+                { user.page == this.state.page ? <td className='data'>{ user.sexGuess == "Boy" ? (user.score) + 10 : user.score }</td> : null }
+                { user.page == this.state.page ? <td className='data'>{ user.sexGuess == "Girl" ? (user.score) + 10 : user.score }</td> : null }
                </tr>
              )
            }
           </tbody>
         </table>
-        <p className='decrement' onClick={ this.decreasePage }>prev</p>
-        { this.state.page == 1 ? null: <p onClick={ this.decreasePage }> { this.state.page - 1 }</p>}
-        <p> { this.state.page }</p>
-        { this.state.page < this.state.pageMax ? <p onClick={ this.increasePage }> { this.state.page + 1 }</p>: null }
-        <p className='increment' onClick={ this.increasePage }>next</p>
       </div>
     );
   }
